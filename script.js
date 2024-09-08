@@ -65,7 +65,7 @@ function showInfoToast() {
 }
 function showWarningToast() {
     toast({
-        title: 'Cảnh bảo !!!',
+        title: 'Cảnh báo !!!',
         message: 'Đề cao cảnh giác trước các thế lực thù địch, các luận điệu xuyên tạc, chống phá Đảng Cộng Sản Việt Nam và thể chế nhà nước CHXHCN Việt Nam.',
         type: 'warning',
         duration: 5000
