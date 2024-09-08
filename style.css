@@ -210,16 +210,20 @@ body {
     }
 }
 /* Warning Btn */
+.animated-wrapper {
+    width: 245px;
+    height: 60px;
+}
 .btn--warn {
     color: #ffb702;
     border: 2px solid #ffb702;
     background-color: transparent;
     border-radius: 4px;
     transform-style: preserve-3d;
-    transition: ease-in-out 2s;
+    transition: ease-in-out 1s;
 }
 
-.btn--warn:hover {
+.animated-wrapper:hover > .btn--warn {
     transform: rotateX(360deg);
 }
 
