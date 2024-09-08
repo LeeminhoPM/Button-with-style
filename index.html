@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Nút bấm của pro</title>
+</head>
+<body>
+    <div id="toast"></div>
+
+    <div class="wrapper">
+        <button onclick="showSuccessToast();" class="btn btn--success">SHOW SUCCESS</button>
+        <button onclick="showInfoToast();" class="btn btn--info">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            SHOW INFO
+        </button>
+        <button onclick="showWarningToast();" class="btn btn--warn">
+            <span>SHOW WARNING</span>
+        </button>
+        <button onclick="showErrorToast();" class="btn btn--danger">SHOW ERROR</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
