@@ -78,17 +78,13 @@ body {
     animation: glowing 20s linear infinite;
     transition: opacity .3s ease-in-out;
     border-radius: 4px;
-    opacity: 0;
+    opacity: 1;
 }
 
 @keyframes glowing {
     0% {background-position: 0 0;}
     50% {background-position: 400% 0;}
     100% {background-position: 0 0;}
-}
-
-.btn--success:hover::before {
-    opacity: 1;
 }
 
 .btn--success::after {
@@ -103,11 +99,11 @@ body {
     border-radius: 4px;
 }
 
-.btn--success:active::after {
+.btn--success:hover::after {
     background: transparent;
 }
 
-.btn--success:active {
+.btn--success:hover {
     color: #000;
     font-weight: bold;
 }
