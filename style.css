@@ -26,6 +26,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    width: inherit;
     height: inherit;
     padding: 0 100px;
 }
@@ -52,12 +53,24 @@ body {
     padding: 8px 40px;
 }
 
-
 /* Success Btn */
 .btn--success {
     background-color: var(--main-color);
     font-weight: bold;
     color: #47d864;
+    border-radius: 4px;
+}
+
+.btn--success:hover {
+    background: linear-gradient(
+        45deg,
+        #ff0000, #ff7300, #fffb00, #48ff00,
+        #00ffd5, #002bff, #ff00cb, #ff0000 
+    );
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s ease-in-out;
+    color: #000;
+    font-weight: bold;
 }
 
 .btn--success::before {
@@ -82,9 +95,15 @@ body {
 }
 
 @keyframes glowing {
-    0% {background-position: 0 0;}
-    50% {background-position: 400% 0;}
-    100% {background-position: 0 0;}
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
 }
 
 .btn--success::after {
@@ -101,11 +120,6 @@ body {
 
 .btn--success:hover::after {
     background: transparent;
-}
-
-.btn--success:hover {
-    color: #000;
-    font-weight: bold;
 }
 
 /* Info Btn */
@@ -211,6 +225,7 @@ body {
     width: 245px;
     height: 60px;
 }
+
 .btn--warn {
     color: #ffb702;
     border: 2px solid #ffb702;
@@ -257,40 +272,113 @@ body {
 }
 
 /* Danger Btn */
-.btn--danger {
-    border: 2px solid #ff623d;
-    color: #ff623d;
-    background-color: transparent;
-    transition: color 1s, box-shadow 1s;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.btn--danger:hover {
-    transition-delay: 0, 1s;
-    color: #fff;
-    box-shadow: 0 0 10px #ff623d,
-                0 0 20px #ff623d,
-                0 0 40px #ff623d,
-                0 0 80px #ff623d,
-                0 0 160px #ff623d;
+.btn--danger,
+.btn--danger::after {
+    background: transparent;
+    color: #ff013c;
+    box-shadow: 6px 0px 0px #00e6f6;
+    border: 1px solid #ff013c;
+    border-right: none;
 }
 
 .btn--danger::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: -50%;
-    width: 0;
-    height: 100%;
-    background: #ff623d;
-    z-index: -1;
-    transform: skewX(35deg);
-    transition: 1s;
+    left: -9px;
+    bottom: -9px;
+    width: 19px;
+    height: 17px;
+    border-top: 1px solid #ff013c;
+    transform: rotate(45deg);
+    background-color: var(--main-color);
 }
 
-.btn--danger:hover::before {
-    width: 100%;
+.btn--danger:hover,
+.btn--danger:hover:after {
+    background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+    color: #fff;
+    box-shadow: 6px 0px 0px #00e6f6;
+}
+
+.btn--danger::after {
+    --slice-0: inset(50% 50% 50% 50%);
+    --slice-1: inset(80% -6px 0 0);
+    --slice-2: inset(50% -6px 30% 0);
+    --slice-3: inset(10% -6px 85% 0);
+    --slice-4: inset(40% -6px 43% 0);
+    --slice-5: inset(80% -6px 5% 0);
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 3%, #00e6f6 3%, #00e6f6 5%, #ff013c 5%);
+    text-shadow: -3px -3px 0px #f8f005, 3px 3px 0px #00e6f6;
+    clip-path: var(--slice-0);
+}
+   
+.btn--danger:hover::after {
+    animation: 1s glitch;
+    animation-timing-function: steps(2, end);
+}
+   
+@keyframes glitch {
+    0% {
+     clip-path: var(--slice-1);
+     transform: translate(-20px, -10px);
+    }
+   
+    10% {
+     clip-path: var(--slice-3);
+     transform: translate(10px, 10px);
+    }
+   
+    20% {
+     clip-path: var(--slice-1);
+     transform: translate(-10px, 10px);
+    }
+   
+    30% {
+     clip-path: var(--slice-3);
+     transform: translate(0px, 5px);
+    }
+   
+    40% {
+     clip-path: var(--slice-2);
+     transform: translate(-5px, 0px);
+    }
+   
+    50% {
+     clip-path: var(--slice-3);
+     transform: translate(5px, 0px);
+    }
+   
+    60% {
+     clip-path: var(--slice-4);
+     transform: translate(5px, 10px);
+    }
+   
+    70% {
+     clip-path: var(--slice-2);
+     transform: translate(-10px, 10px);
+    }
+   
+    80% {
+     clip-path: var(--slice-5);
+     transform: translate(20px, -10px);
+    }
+   
+    90% {
+     clip-path: var(--slice-1);
+     transform: translate(-10px, 0px);
+    }
+   
+    100% {
+     clip-path: var(--slice-1);
+     transform: translate(0);
+    }
 }
 
 /* Toast */
@@ -408,4 +496,26 @@ body {
 
 .toast__close:hover {
     opacity: 0.8;
+}
+
+/* responsive */
+@media only screen and (max-width: 740px) {
+    .wrapper {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .btn {
+        flex: 1;
+    }
+    #toast {
+        top: 8px;
+        right: 8px;
+        left: 8px;
+    }
+    .toast {
+        max-width: 100%;
+    }
+    .toast + .toast {
+        margin-top: 8px;
+    }
 }
